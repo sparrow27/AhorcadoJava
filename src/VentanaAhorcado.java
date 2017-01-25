@@ -55,7 +55,39 @@ public class VentanaAhorcado extends javax.swing.JFrame {
     
     }
     
+     private void chequeaLetra(String letra){
+    letra = letra.toUpperCase();
+   //String palabraConGuiones = pantalla.getText();
+    StringBuilder palabraConGuiones = new StringBuilder (pantalla.getText());
     
+    
+    if (palabraOculta.contains(letra)){
+    for (int i=0; i< palabraOculta.length(); i++){
+            if (palabraOculta. charAt(i)== letra.charAt(0)){
+               palabraConGuiones.setCharAt(2*i, letra.charAt(0));
+            }
+        }
+    pantalla.setText(palabraConGuiones.toString());
+    }
+    else{
+    
+      
+        
+    numeroFallos ++;
+    dibujaImagen(numeroFallos);
+    
+    }
+    }
+    // palabraConGuiones = palabraConGuiones.substring(0, 2*i) + letra + palabraConGuiones.substring(2*i+1);
+    
+    
+    private void chequeaBoton(JButton miBoton){
+    //inhabilito los botones    
+    miBoton.setEnabled(false);
+    //extraigo la letra
+    chequeaLetra (miBoton.getText()); 
+    
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -579,39 +611,7 @@ public class VentanaAhorcado extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private void chequeaLetra(String letra){
-    letra = letra.toUpperCase();
-   //String palabraConGuiones = pantalla.getText();
-    StringBuilder palabraConGuiones = new StringBuilder (pantalla.getText());
-    
-    
-    if (palabraOculta.contains(letra)){
-    for (int i=0; i< palabraOculta.length(); i++){
-            if (palabraOculta. charAt(i)== letra.charAt(0)){
-               palabraConGuiones.setCharAt(2*i, letra.charAt(0));
-            }
-        }
-    pantalla.setText(palabraConGuiones.toString());
-    }
-    else{
-    
-      
-        
-    numeroFallos ++;
-    dibujaImagen(numeroFallos);
-    
-    }
-    }
-    // palabraConGuiones = palabraConGuiones.substring(0, 2*i) + letra + palabraConGuiones.substring(2*i+1);
-    
-    
-    private void chequeaBoton(JButton miBoton){
-    //inhabilito los botones    
-    miBoton.setEnabled(false);
-    //extraigo la letra
-    chequeaLetra (miBoton.getText()); 
-    
-    }
+   
     
     
     
